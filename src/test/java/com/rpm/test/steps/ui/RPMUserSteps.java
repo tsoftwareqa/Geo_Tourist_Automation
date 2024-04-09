@@ -61,6 +61,7 @@ public class RPMUserSteps extends UIInteractionSteps{
 		givenThat(appAdmin).attemptsTo(Click.on(homepage.LOGOUT));
 	}
 	
+	//verify logo
 	@Given("{word} should logout from application and navigate to login screen")
 	public void should_logout_from_application_and_navigate_to_login_screen(String role) {
 		givenThat(appAdmin).attemptsTo(Ensure.that(homepage.APP_LOGO).isDisplayed());
