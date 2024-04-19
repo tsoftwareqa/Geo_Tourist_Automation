@@ -5,6 +5,10 @@ import java.util.logging.Logger;
 import com.rpm.test.page_objects.HomePage;
 import com.rpm.test.questions.ui.ApplicationEnquiryResult;
 import com.rpm.test.tasks.ui.common.Login;
+import com.rpm.test.tasks.ui.rpm.PatientStatus;
+import com.rpm.test.tasks.ui.rpm.Patients;
+
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -65,5 +69,20 @@ public class RPMUserSteps extends UIInteractionSteps{
 	@Given("{word} should logout from application and navigate to login screen")
 	public void should_logout_from_application_and_navigate_to_login_screen(String role) {
 		givenThat(appAdmin).attemptsTo(Ensure.that(homepage.APP_LOGO).isDisplayed());
+	}
+	
+	@When("Search the patient by name")
+	public void Search_the_patient_by_name() {
+		givenThat(appAdmin).attemptsTo(Patients.fromUnderlineDetails());
+	}
+	
+	@When("Verify searched record")
+	public void Verify_searched_record() {
+		givenThat(appAdmin).attemptsTo();
+	}
+	
+	@Given("update status of patient")
+	public void update_status_of_patient(DataTable statinfo) {
+		givenThat(appAdmin).attemptsTo(PatientStatus.fromUnderlineDetails(statinfo));
 	}
 }
