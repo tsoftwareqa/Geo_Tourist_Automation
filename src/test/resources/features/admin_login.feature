@@ -5,7 +5,7 @@ Feature: Manage login and logout session for admin
     Given AdminUser is on Home page of application and login
     When AdminUser verify dashboard label
    
-@SmokeTest1
+@SmokeTest
   Scenario: Validate admin login to application with valid credentials and logout
     Given AdminUser is on Home page of application and login
     When AdminUser clicks on logout option
