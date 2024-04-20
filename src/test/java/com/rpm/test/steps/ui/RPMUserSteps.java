@@ -3,10 +3,12 @@ package com.rpm.test.steps.ui;
 import static net.serenitybdd.screenplay.GivenWhenThen.givenThat;
 import java.util.logging.Logger;
 import com.rpm.test.page_objects.HomePage;
+import com.rpm.test.page_objects.Staff_objects;
 import com.rpm.test.questions.ui.ApplicationEnquiryResult;
 import com.rpm.test.tasks.ui.common.Login;
 import com.rpm.test.tasks.ui.rpm.PatientStatus;
 import com.rpm.test.tasks.ui.rpm.Patients;
+import com.rpm.test.tasks.ui.rpm.Staff;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
@@ -84,5 +86,15 @@ public class RPMUserSteps extends UIInteractionSteps{
 	@Given("update status of patient")
 	public void update_status_of_patient(DataTable statinfo) {
 		givenThat(appAdmin).attemptsTo(PatientStatus.fromUnderlineDetails(statinfo));
+	}
+	
+	@Given("Navigate to Staff menu")
+	public void Navigate_to_Staff_menu() {
+		givenThat(appAdmin).attemptsTo(Click.on(Staff_objects.STAFF_MENU));
+	}
+	
+	@Given("Create staff account")
+	public void Create_staff_account(DataTable staffinfo) {
+		givenThat(appAdmin).attemptsTo(Staff.fromUnderlineDetails(staffinfo));
 	}
 }
