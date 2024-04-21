@@ -3,6 +3,7 @@ package com.rpm.test.steps.ui;
 import static net.serenitybdd.screenplay.GivenWhenThen.givenThat;
 import java.util.logging.Logger;
 import com.rpm.test.page_objects.HomePage;
+import com.rpm.test.page_objects.PatientsObject;
 import com.rpm.test.page_objects.StaffObject;
 import com.rpm.test.questions.ui.ApplicationEnquiryResult;
 import com.rpm.test.tasks.ui.common.Login;
@@ -102,6 +103,19 @@ public class RPMUserSteps extends UIInteractionSteps{
 	
 	@Given("Verify created staff record")
 	public void Verify_created_staff_record() {
+		givenThat(appAdmin).attemptsTo();
+	}
+	
+	@Given("Select Inactive status from dropdown")
+	public void Select_Inactive_status_from_dropdown() {
+		givenThat(appAdmin).attemptsTo(Click.on(PatientsObject.STATUS));
+		waitABit(1000);
+		givenThat(appAdmin).attemptsTo(Click.on(PatientsObject.INACTIVE));
+		waitABit(5000);
+	}
+	
+	@Given("verify searched records")
+	public void verify_searched_records() {
 		givenThat(appAdmin).attemptsTo();
 	}
 }

@@ -18,7 +18,7 @@ Feature: Manage staff scenarios on dashboard
     | Staff      |
     Then Verify searched record
     
-@SmokeTest1
+@SmokeTest
   Scenario: Validate deactivate staff
     Given AdminUser is on Home page of application and login
     And Navigate to Staff menu
@@ -39,3 +39,10 @@ Feature: Manage staff scenarios on dashboard
     Then update status of staff
     | Status   |
     | Activate |
+    
+@SmokeTest1
+  Scenario: Validate filter patient record by inactive status
+    Given AdminUser is on Home page of application and login
+    And Navigate to Staff menu
+    When Select Inactive status from dropdown
+    Then verify searched records

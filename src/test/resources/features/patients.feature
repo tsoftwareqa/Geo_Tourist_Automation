@@ -8,7 +8,7 @@ Feature: Manage patient scenarios on dashboard
     | Patient    |
     Then Verify searched record
     
-@SmokeTest1
+@SmokeTest
   Scenario: Validate deactivate patient
     Given AdminUser is on Home page of application and login
     When Search the patient by name
@@ -18,7 +18,7 @@ Feature: Manage patient scenarios on dashboard
     | Status     |
     | Deactivate |
     
-@SmokeTest1
+@SmokeTest
   Scenario: Validate activate patient
     Given AdminUser is on Home page of application and login
     When Search the patient by name
@@ -27,3 +27,9 @@ Feature: Manage patient scenarios on dashboard
     Then update status of patient
     | Status   |
     | Activate |
+    
+@SmokeTest
+  Scenario: Validate filter patient record by inactive status
+    Given AdminUser is on Home page of application and login
+    When Select Inactive status from dropdown
+    Then verify searched records

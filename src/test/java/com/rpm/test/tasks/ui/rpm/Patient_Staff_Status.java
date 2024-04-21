@@ -38,13 +38,14 @@ public class Patient_Staff_Status extends PageObject implements Task {
 			actor.attemptsTo(Enter.keyValues("This is deactivate description").into(PatientsObject.DESCRIPTION));
 			waitABit(1000);
 			actor.attemptsTo(Click.on(PatientsObject.STATUS_BUTTON));
+			waitABit(3500);
 		} else {
 			actor.attemptsTo(Click.on(PatientsObject.DEACTIVATE_LINK));
 			waitABit(2200);
 			actor.attemptsTo(Enter.keyValues("This is activate description").into(PatientsObject.DESCRIPTION));
 			waitABit(1000);
 			actor.attemptsTo(Click.on(PatientsObject.STATUS_BUTTON));
-			waitABit(2000);
+			waitABit(3500);
 		}
 	}
 

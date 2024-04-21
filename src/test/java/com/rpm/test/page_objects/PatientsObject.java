@@ -23,6 +23,11 @@ public class PatientsObject extends PageObject {
 	public static Target STATUS_BUTTON = Target.the("description").locatedBy(
 			"//button[@class='MuiLoadingButton-root MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-1b4w0jq']");
 
+	public static Target STATUS = Target.the("status").locatedBy(
+			"(//div[@class='MuiSelect-select MuiSelect-outlined MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputSizeSmall css-80wq58'])[2]");
+	public static Target INACTIVE = Target.the("inactive status").locatedBy(
+			"//li[contains(text(),'In-Active')]");
+	
 	public List<String> getPatientList() {
 		return findAll(ALL_PATIENT_NAME).stream().map(WebElementFacade::getText).collect(Collectors.toList());
 	}
