@@ -2,7 +2,7 @@ package com.rpm.test.tasks.ui.rpm;
 
 import java.util.Map;
 
-import com.rpm.test.page_objects.Staff_objects;
+import com.rpm.test.page_objects.StaffObject;
 import com.rpm.test.utils.CommonUtil;
 import com.rpm.test.utils.ConvertCucumberDataTable;
 import io.cucumber.datatable.DataTable;
@@ -11,6 +11,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.actions.Scroll;
 
 public class Staff extends UIInteractions implements Task  {
 	
@@ -36,36 +37,52 @@ public class Staff extends UIInteractions implements Task  {
 	}
 	@Override
 	public <T extends Actor> void performAs(T actor) {
+		waitABit(2200);
 		
-		actor.attemptsTo(Click.on(Staff_objects.CREATE_NEW_ACCOUNT));
+		actor.attemptsTo(Click.on(StaffObject.CREATE_NEW_ACCOUNT));
 		waitABit(1000);
 		
-		actor.attemptsTo(Enter.keyValues("Aman").into(Staff_objects.FIRST_NAME));
+		actor.attemptsTo(Enter.keyValues("Aman").into(StaffObject.FIRST_NAME));
 		
-		actor.attemptsTo(Enter.keyValues("Singh").into(Staff_objects.LAST_NAME));
+		actor.attemptsTo(Enter.keyValues("Singh").into(StaffObject.LAST_NAME));
 		
 		String mailString = "testmail"+CommonUtil.generateRandomNumber()+"@gmail.com";
-		actor.attemptsTo(Enter.keyValues(mailString).into(Staff_objects.EMAIL));
+		actor.attemptsTo(Enter.keyValues(mailString).into(StaffObject.EMAIL));
 		
-		actor.attemptsTo(Enter.keyValues(CommonUtil.generateNineDigitNumber()+"0").into(Staff_objects.PHONE));
+		actor.attemptsTo(Enter.keyValues(CommonUtil.generateNineDigitNumber()+"0").into(StaffObject.PHONE));
 		
-		actor.attemptsTo(Enter.keyValues("St peters 125th").into(Staff_objects.ADDRESS));
+		actor.attemptsTo(Enter.keyValues("St peters 125th").into(StaffObject.ADDRESS));
 		
-		actor.attemptsTo(Enter.keyValues(zipcode).into(Staff_objects.ZIP));
+		actor.attemptsTo(Enter.keyValues(zipcode).into(StaffObject.ZIP));
 		
-		actor.attemptsTo(Enter.keyValues("Alabama").into(Staff_objects.STATE));
+		actor.attemptsTo(Click.on(StaffObject.SELECT_ZIP));
+		waitABit(1000);
 		
-		actor.attemptsTo(Enter.keyValues("Birmingham").into(Staff_objects.CITY));
+		actor.attemptsTo(Enter.keyValues(stafftype).into(StaffObject.STAFF_TYPE));
 		
-		actor.attemptsTo(Enter.keyValues(stafftype).into(Staff_objects.STAFF_TYPE));
+		actor.attemptsTo(Click.on(StaffObject.SELECT_STAFFTYPE));
+		waitABit(1000);
 		
-		actor.attemptsTo(Enter.keyValues(CommonUtil.generateNineDigitNumber()).into(Staff_objects.NPI_NUMBER));
+		actor.attemptsTo(Scroll.to(StaffObject.SAVE_INFO).andAlignToTop());
+		waitABit(1000);
 		
-		actor.attemptsTo(Enter.keyValues(credentials).into(Staff_objects.CREDENTIALS));
+		actor.attemptsTo(Enter.keyValues(CommonUtil.generateNineDigitNumber()).into(StaffObject.NPI_NUMBER));
+		waitABit(1000);
 		
-		actor.attemptsTo(Enter.keyValues(stateoflicense).into(Staff_objects.STATE_OF_LICENSES));
+		actor.attemptsTo(Click.on(StaffObject.CREDENTIALS));
+		waitABit(1000);
 		
-		actor.attemptsTo(Click.on(Staff_objects.SAVE_INFO));
+		actor.attemptsTo(Click.on(StaffObject.SELECT_CREDENTIALS));
+		waitABit(1000);
+		
+		actor.attemptsTo(Enter.keyValues(stateoflicense).into(StaffObject.STATE_OF_LICENSES));
+		waitABit(1000);
+		
+		actor.attemptsTo(Click.on(StaffObject.SELECT_STATE_LICENSE));
+		waitABit(1000);
+		
+		actor.attemptsTo(Click.on(StaffObject.SAVE_INFO));
+		waitABit(3500);
 	}
 
 }

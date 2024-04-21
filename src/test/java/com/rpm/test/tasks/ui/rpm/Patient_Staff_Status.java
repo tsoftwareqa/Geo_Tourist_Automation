@@ -12,19 +12,19 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
-public class PatientStatus extends PageObject implements Task {
+public class Patient_Staff_Status extends PageObject implements Task {
 
 	PatientsObject patobject;
 	
 	private static String status;
-	public PatientStatus(String status) {
+	public Patient_Staff_Status(String status) {
 		this.status=status;
 	}
 	
-	public static PatientStatus fromUnderlineDetails(DataTable stausinfo) {
+	public static Patient_Staff_Status fromUnderlineDetails(DataTable stausinfo) {
 		Map<String, String> statusinfodata = ConvertCucumberDataTable.toMap(stausinfo);
 		status = statusinfodata.get("Status");
-		return new PatientStatus(status);
+		return new Patient_Staff_Status(status);
 	}
 	
 	@Override
@@ -35,7 +35,7 @@ public class PatientStatus extends PageObject implements Task {
 		if (status.equalsIgnoreCase("Deactivate")) {
 			actor.attemptsTo(Click.on(PatientsObject.DEACTIVATE_LINK));
 			waitABit(2200);
-			actor.attemptsTo(Enter.keyValues("This is description").into(PatientsObject.DESCRIPTION));
+			actor.attemptsTo(Enter.keyValues("This is deactivate description").into(PatientsObject.DESCRIPTION));
 			waitABit(1000);
 			actor.attemptsTo(Click.on(PatientsObject.STATUS_BUTTON));
 		} else {
