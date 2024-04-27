@@ -52,8 +52,10 @@ public class Staff extends UIInteractions implements Task  {
 		actor.attemptsTo(Enter.keyValues(CommonUtil.generateNineDigitNumber()+"0").into(StaffObject.PHONE));
 		
 		actor.attemptsTo(Enter.keyValues("St peters 125th").into(StaffObject.ADDRESS));
+		waitABit(1000);
 		
 		actor.attemptsTo(Enter.keyValues(zipcode).into(StaffObject.ZIP));
+		waitABit(1000);
 		
 		actor.attemptsTo(Click.on(StaffObject.SELECT_ZIP));
 		waitABit(1000);

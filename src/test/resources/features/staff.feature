@@ -1,6 +1,6 @@
 Feature: Manage staff scenarios on dashboard
 
-@SmokeTest
+@SmokeTest1
   Scenario: Validate add staff member and verify
     Given AdminUser is on Home page of application and login
     When Navigate to Staff menu
@@ -40,7 +40,7 @@ Feature: Manage staff scenarios on dashboard
     | Status   |
     | Activate |
     
-@SmokeTest1
+@SmokeTest
   Scenario: Validate filter patient record by inactive status
     Given AdminUser is on Home page of application and login
     And Navigate to Staff menu

@@ -10,19 +10,28 @@ import com.rpm.test.tasks.ui.common.Login;
 import com.rpm.test.tasks.ui.rpm.Patient_Staff_Status;
 import com.rpm.test.tasks.ui.rpm.Search_Operation;
 import com.rpm.test.tasks.ui.rpm.Staff;
+import com.rpm.test.utils.CommonUtil;
+import com.rpm.test.utils.Key;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import net.serenitybdd.core.di.SerenityInfrastructure;
+import net.serenitybdd.core.pages.ClearContents;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.serenitybdd.model.environment.EnvironmentSpecificConfiguration;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.RememberThat;
+import net.serenitybdd.screenplay.actions.Clear;
+import net.serenitybdd.screenplay.actions.ClearBy;
+import net.serenitybdd.screenplay.actions.ClearElement;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.actions.Scroll;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.ensure.Ensure;
+import net.serenitybdd.screenplay.questions.Text;
 import net.thucydides.model.util.EnvironmentVariables;
 
 public class RPMUserSteps extends UIInteractionSteps{
@@ -32,6 +41,7 @@ public class RPMUserSteps extends UIInteractionSteps{
 
 	private Actor appAdmin;
 	private HomePage homepage;
+	private PatientsObject patObject;
 	
 	@Before(order = 2)
 	public void setup() {
@@ -116,6 +126,30 @@ public class RPMUserSteps extends UIInteractionSteps{
 	
 	@Given("verify searched records")
 	public void verify_searched_records() {
-		givenThat(appAdmin).attemptsTo();
+		givenThat(appAdmin).attemptsTo(Ensure.that(PatientsObject.INACTIVE_ICON).isDisplayed());
+	}
+	
+	@Given("Update patient record")
+	public void Update_patient_record() {
+		waitABit(1000);
+		givenThat(appAdmin).attemptsTo(Click.on(PatientsObject.EDIT_ICON));
+		waitABit(3000);
+		String num = CommonUtil.generateRandomNumber()+"";
+		givenThat(appAdmin).attemptsTo(Enter.keyValues(num).into(PatientsObject.LAST_NAME));
+		givenThat(appAdmin).remember(num, Key.LAST_NAME);
+		waitABit(2000);
+		givenThat(appAdmin).attemptsTo(Scroll.to(PatientsObject.SAVE_INFO).andAlignToBottom());
+		waitABit(2000);
+		givenThat(appAdmin).attemptsTo(Click.on(PatientsObject.SAVE_INFO));
+		waitABit(4000);
+	}
+	
+	@Given("Verify updated patient record")
+	public void Verify_updated_patient_record() {
+		String updated_name = givenThat(appAdmin).asksFor(Text.of(PatientsObject.UPDATED_LNAME));
+		waitABit(1000);
+		System.out.println(updated_name);
+		Ensure.that(updated_name).endsWith(givenThat(appAdmin).recall(Key.LAST_NAME));
+		waitABit(1000);
 	}
 }
