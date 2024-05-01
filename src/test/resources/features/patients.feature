@@ -34,7 +34,7 @@ Feature: Manage patient scenarios on dashboard
     When Select Inactive status from dropdown
     Then verify searched records
     
-@SmokeTest1
+@SmokeTest
   Scenario: Validate update patient and verify
     Given AdminUser is on Home page of application and login
     When Update patient record

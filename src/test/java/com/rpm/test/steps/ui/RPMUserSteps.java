@@ -135,21 +135,22 @@ public class RPMUserSteps extends UIInteractionSteps{
 		givenThat(appAdmin).attemptsTo(Click.on(PatientsObject.EDIT_ICON));
 		waitABit(3000);
 		String num = CommonUtil.generateRandomNumber()+"";
+		givenThat(appAdmin).remember( Key.LAST_NAME, num);
 		givenThat(appAdmin).attemptsTo(Enter.keyValues(num).into(PatientsObject.LAST_NAME));
-		givenThat(appAdmin).remember(num, Key.LAST_NAME);
 		waitABit(2000);
 		givenThat(appAdmin).attemptsTo(Scroll.to(PatientsObject.SAVE_INFO).andAlignToBottom());
 		waitABit(2000);
 		givenThat(appAdmin).attemptsTo(Click.on(PatientsObject.SAVE_INFO));
 		waitABit(4000);
-	}
+		
+	} 	 	
 	
 	@Given("Verify updated patient record")
 	public void Verify_updated_patient_record() {
 		String updated_name = givenThat(appAdmin).asksFor(Text.of(PatientsObject.UPDATED_LNAME));
 		waitABit(1000);
-		System.out.println(updated_name);
 		Ensure.that(updated_name).endsWith(givenThat(appAdmin).recall(Key.LAST_NAME));
+		System.out.println(Key.LAST_NAME);
 		waitABit(1000);
 	}
 }

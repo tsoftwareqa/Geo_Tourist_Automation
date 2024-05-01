@@ -42,7 +42,7 @@ public class StaffObject extends PageObject {
 	public static Target SAVE_INFO = Target.the("Save info")
 			.locatedBy("//button[@class='MuiLoadingButton-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-mz0g63']");
 	public static Target SELECT_ZIP = Target.the("select zip")
-			.locatedBy("//input[@aria-activedescendant='zip-option-0']");
+			.locatedBy("//div[@class='MuiAutocomplete-popper css-11e80r3']");
 	public static Target SELECT_STAFFTYPE = Target.the("select staff type")
 			.locatedBy("//input[@value='FTC']");
 	public static Target SELECT_CREDENTIALS = Target.the("select cred")
