@@ -116,7 +116,7 @@ public class CommonUtil {
 	
 	public static String captureScreenshot(WebDriver driver) {
 		File src=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		String screenshotpath=System.getProperty("user.dir")+"/src/test/resources/Screenshots/Order_"+getCurrentDateTime()+ ".png";
+		String screenshotpath=System.getProperty("user.dir")+"/src/test/resources/Screenshots/"+getCurrentDateTime()+ ".png";
 		try {
 			FileHandler.copy(src, new File(screenshotpath));
 			System.out.println("Screenshot captured successfully");
