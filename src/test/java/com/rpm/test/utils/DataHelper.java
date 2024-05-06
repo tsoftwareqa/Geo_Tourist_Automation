@@ -44,7 +44,7 @@ public class DataHelper {
 	static File destFile;
 
 	static {
-		srcFile = new File(System.getProperty("user.dir") + "/src/test/resources/sources/TradeGanit.xlsx");
+		srcFile = new File(System.getProperty("user.dir") + "/src/test/resources/sources/RPMTestData.xlsx");
 		try {
 			fileInputStream = new FileInputStream(srcFile);
 			try {
@@ -76,64 +76,7 @@ public class DataHelper {
 		}
 		logger.info("Excel file has been generated successfully");
 	}
-	
-	public static void writeAccountInfo(String ucc) {
-		   sheet = workbook.getSheet("Account");
-			XSSFRow row = sheet.createRow((short) 2);
-			row.createCell(1).setCellValue(ucc);		
-		try {
-			fileOutputStream = new FileOutputStream(srcFile);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		try {
-			workbook.write(fileOutputStream);
-			fileOutputStream.flush();
-			fileOutputStream.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		logger.info("Excel file has been generated successfully");
-	}
-	
-	public static void writeAccountWOB(String ucc) {
-		   sheet = workbook.getSheet("Account");
-			XSSFRow row = sheet.createRow((short) 3);
-			row.createCell(1).setCellValue(ucc);		
-		try {
-			fileOutputStream = new FileOutputStream(srcFile);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		try {
-			workbook.write(fileOutputStream);
-			fileOutputStream.flush();
-			fileOutputStream.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		logger.info("Excel file has been generated successfully");
-	}
-	
-	public static void writeInstrumentInfo(String symbol) {
-		   sheet = workbook.getSheet("Account");
-			XSSFRow row = sheet.createRow((short) 3);
-			row.createCell(2).setCellValue(symbol);		
-		try {
-			fileOutputStream = new FileOutputStream(srcFile);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		try {
-			workbook.write(fileOutputStream);
-			fileOutputStream.flush();
-			fileOutputStream.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		logger.info("Excel file has been generated successfully");
-	}
-	
+		
 	public static String getRecord(String sheetname, int row, int col) {
 		DataFormatter formatter = new DataFormatter();
 		sheet = workbook.getSheet(sheetname);

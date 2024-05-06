@@ -1,6 +1,6 @@
 Feature: Manage staff scenarios on dashboard
 
-@SmokeTest1
+@SmokeTest
   Scenario: Validate add staff member and verify
     Given AdminUser is on Home page of application and login
     When Navigate to Staff menu
