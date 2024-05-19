@@ -14,7 +14,7 @@ public class StaffObject extends PageObject {
 	public static Target ALL_STAFF_NAME = Target.the("all patient name").locatedBy(
 			"//div[@class='MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiTypography-noWrap css-6wkntp']");
 	public static Target CREATE_NEW_ACCOUNT = Target.the("create new account").locatedBy(
-			"//button[@class='MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-17wv3t3']");
+			"//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium  css-17wv3t3']");
 	public static Target FIRST_NAME = Target.the("First name")
 			.locatedBy("//input[@name='fname']");
 	public static Target LAST_NAME = Target.the("last name")
@@ -52,5 +52,9 @@ public class StaffObject extends PageObject {
 	
 	public List<String> getStaffList() {
 		return findAll(ALL_STAFF_NAME).stream().map(WebElementFacade::getText).collect(Collectors.toList());
+	}
+	
+	public List<String> getZipList() {
+		return findAll(SELECT_ZIP).stream().map(WebElementFacade::getText).collect(Collectors.toList());
 	}
 }
