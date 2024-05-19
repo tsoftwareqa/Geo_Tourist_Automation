@@ -1,6 +1,9 @@
 package com.rpm.test.tasks.ui.rpm;
 
+import java.util.List;
 import java.util.Map;
+
+import org.ehcache.javadoc.PrivateApi;
 
 import com.rpm.test.page_objects.StaffObject;
 import com.rpm.test.utils.CommonUtil;
@@ -19,6 +22,7 @@ public class Staff extends UIInteractions implements Task  {
 	private static String zipcode;
 	private static String credentials;
 	private static String stateoflicense;
+	private StaffObject staffObject;
 	
 	public Staff(String stafftype, String zipcode, String credentials, String stateoflicense) {
 		this.stafftype=stafftype;
@@ -55,7 +59,10 @@ public class Staff extends UIInteractions implements Task  {
 		waitABit(1000);
 		
 		actor.attemptsTo(Enter.keyValues(zipcode).into(StaffObject.ZIP));
-		waitABit(1000);
+		waitABit(3000);
+		
+		List<String> getList = staffObject.getZipList();
+		System.out.println(getList.get(0));
 		
 		actor.attemptsTo(Click.on(StaffObject.SELECT_ZIP));
 		waitABit(1000);
