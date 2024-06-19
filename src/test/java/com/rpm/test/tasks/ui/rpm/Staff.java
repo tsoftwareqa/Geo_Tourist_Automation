@@ -1,9 +1,8 @@
 package com.rpm.test.tasks.ui.rpm;
 
-import java.util.List;
 import java.util.Map;
 
-import org.ehcache.javadoc.PrivateApi;
+import org.openqa.selenium.Keys;
 
 import com.rpm.test.page_objects.StaffObject;
 import com.rpm.test.utils.CommonUtil;
@@ -58,36 +57,21 @@ public class Staff extends UIInteractions implements Task  {
 		actor.attemptsTo(Enter.keyValues("St peters 125th").into(StaffObject.ADDRESS));
 		waitABit(1000);
 		
-		actor.attemptsTo(Enter.keyValues(zipcode).into(StaffObject.ZIP));
+		actor.attemptsTo(Enter.keyValues(zipcode).into(StaffObject.ZIP));	
 		waitABit(3000);
 		
-		List<String> getList = staffObject.getZipList();
-		System.out.println(getList.get(0));
-		
-		actor.attemptsTo(Click.on(StaffObject.SELECT_ZIP));
-		waitABit(1000);
-		
-		actor.attemptsTo(Enter.keyValues(stafftype).into(StaffObject.STAFF_TYPE));
+		actor.attemptsTo(Enter.keyValues("").into(StaffObject.ZIP)
+				.thenHit(Keys.ARROW_DOWN).thenHit(Keys.RETURN));
+		waitABit(3000);
 		
 		actor.attemptsTo(Click.on(StaffObject.SELECT_STAFFTYPE));
-		waitABit(1000);
+		waitABit(3000);
+		
+		actor.attemptsTo(Enter.keyValues("").into(StaffObject.SELECT_STAFFTYPE)
+				.thenHit(Keys.ARROW_UP).thenHit(Keys.RETURN));
+		waitABit(3000);
 		
 		actor.attemptsTo(Scroll.to(StaffObject.SAVE_INFO).andAlignToTop());
-		waitABit(1000);
-		
-		actor.attemptsTo(Enter.keyValues(CommonUtil.generateNineDigitNumber()).into(StaffObject.NPI_NUMBER));
-		waitABit(1000);
-		
-		actor.attemptsTo(Click.on(StaffObject.CREDENTIALS));
-		waitABit(1000);
-		
-		actor.attemptsTo(Click.on(StaffObject.SELECT_CREDENTIALS));
-		waitABit(1000);
-		
-		actor.attemptsTo(Enter.keyValues(stateoflicense).into(StaffObject.STATE_OF_LICENSES));
-		waitABit(1000);
-		
-		actor.attemptsTo(Click.on(StaffObject.SELECT_STATE_LICENSE));
 		waitABit(1000);
 		
 		actor.attemptsTo(Click.on(StaffObject.SAVE_INFO));

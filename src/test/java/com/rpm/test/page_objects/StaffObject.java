@@ -40,11 +40,11 @@ public class StaffObject extends PageObject {
 	public static Target STATE_OF_LICENSES = Target.the("state of licenses")
 			.locatedBy("//input[@id='stateOfLicenses']");
 	public static Target SAVE_INFO = Target.the("Save info")
-			.locatedBy("//button[@class='MuiLoadingButton-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-mz0g63']");
+			.locatedBy("//button[@type='submit' and contains(text(),'Save Info')]");
 	public static Target SELECT_ZIP = Target.the("select zip")
 			.locatedBy("//div[@class='MuiAutocomplete-popper css-11e80r3']");
 	public static Target SELECT_STAFFTYPE = Target.the("select staff type")
-			.locatedBy("//input[@value='FTC']");
+			.locatedBy("//input[@id='staffType']");
 	public static Target SELECT_CREDENTIALS = Target.the("select cred")
 			.locatedBy("//input[@aria-activedescendant='credentials-option-0']");
 	public static Target SELECT_STATE_LICENSE = Target.the("select state license")
