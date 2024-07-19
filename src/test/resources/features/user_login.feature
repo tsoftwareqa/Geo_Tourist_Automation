@@ -1,11 +1,11 @@
 Feature: Manage login and logout session for user
 
-@SmokeTest1
+@SmokeTest
   Scenario: Validate user login to application with valid credentials
     Given user is on Home page of application and login
     When user verify dashboard label
    
-@SmokeTest
+@SmokeTest1
   Scenario: Validate user login to application with valid credentials and logout
     Given user is on Home page of application and login
     When user clicks on logout option

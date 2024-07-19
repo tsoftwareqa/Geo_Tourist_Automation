@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import com.geo.test.page_objects.HomePage;
 import com.geo.test.questions.ui.ApplicationEnquiryResult;
 import com.geo.test.tasks.ui.common.Login;
+import com.geo.test.tasks.ui.geo.UserRegister;
 import com.geo.test.utils.CommonUtil;
 import com.geo.test.utils.Key;
 import io.cucumber.datatable.DataTable;
@@ -62,19 +63,31 @@ public class GEOUserSteps extends UIInteractionSteps{
 
 	@When("{word} verify error validation message")
 	public void verify_error_validation_message(String role) {
-		givenThat(user).attemptsTo(Ensure.that(homepage.INVALID_LOGIN_ERROR_MESSAGE.resolveFor(user).getTextValue())
-				.isEqualTo("Wrong email or password"));
+		givenThat(user).attemptsTo(Ensure.that(homepage.INVALID_LOGIN_ERROR_MESSAGE.resolveFor(user).getText())
+				.isEqualTo("Login Credentials Failed"));
 	}
 	
 	@When("{word} clicks on logout option")
 	public void clicks_on_logout_option(String role) {
 		givenThat(user).attemptsTo(Click.on(homepage.DOWN_ARROW));
 		givenThat(user).attemptsTo(Click.on(homepage.LOGOUT));
+		givenThat(user).attemptsTo(Click.on(homepage.APP_LOGOUT));
 	}
 	
 	//verify logo
 	@Given("{word} should logout from application and navigate to login screen")
 	public void should_logout_from_application_and_navigate_to_login_screen(String role) {
+		givenThat(user).attemptsTo(Ensure.that(homepage.APP_LOGO).isDisplayed());
+	}
+	
+	@Given("{word} is on Home page of application and signup")
+	public void user_is_on_home_page_of_application_and_signup(String role) {
+		user.assignName(role);
+		givenThat(user).attemptsTo(UserRegister.fromUnderlineDetails());
+	}
+	
+	@When("{word} verify dashboard logo")
+	public void verify_dashboard_label(String role) {
 		givenThat(user).attemptsTo(Ensure.that(homepage.APP_LOGO).isDisplayed());
 	}
 }
