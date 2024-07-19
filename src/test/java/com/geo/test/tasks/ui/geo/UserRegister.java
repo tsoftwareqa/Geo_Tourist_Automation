@@ -1,8 +1,7 @@
 package com.geo.test.tasks.ui.geo;
-
 import com.geo.test.page_objects.HomePage;
+import com.geo.test.tasks.ui.common.NavigateTo;
 import com.geo.test.utils.CommonUtil;
-
 import net.serenitybdd.core.steps.UIInteractions;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -12,12 +11,19 @@ import net.serenitybdd.screenplay.actions.Scroll;
 
 public class UserRegister extends UIInteractions implements Task{
 
+	 public UserRegister() {
+	    
+	    }
+	 
 	public static UserRegister fromUnderlineDetails() {
 		return new UserRegister();
 	}
 	
 	@Override
 	public <T extends Actor> void performAs(T actor) {
+		waitABit(1000);
+		actor.wasAbleTo(NavigateTo.theLoginPage());
+		waitABit(1000);
 		
 		actor.attemptsTo(Click.on(HomePage.SIGNUP_LINK));
 		waitABit(2000);
@@ -40,8 +46,6 @@ public class UserRegister extends UIInteractions implements Task{
 		actor.attemptsTo(Scroll.to(HomePage.SIGNUP_BTN).andAlignToBottom());
 		
 		actor.attemptsTo(Click.on(HomePage.SIGNUP_BTN));
-		waitABit(3000);
-		
+		waitABit(3000);	
 	}
-
 }

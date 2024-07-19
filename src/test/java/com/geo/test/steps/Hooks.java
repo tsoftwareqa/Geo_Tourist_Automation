@@ -29,7 +29,7 @@ public class Hooks {
     @Before(order = 1)
     public void setup() {
         OnStage.setTheStage(new OnlineCast());
-        user = OnStage.theActorCalled("AA");
+        user = OnStage.theActorCalled("user");
         user.whoCan(BrowseTheWeb.with(userBrowser));
     }
 

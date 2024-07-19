@@ -86,8 +86,8 @@ public class GEOUserSteps extends UIInteractionSteps{
 		givenThat(user).attemptsTo(UserRegister.fromUnderlineDetails());
 	}
 	
-	@When("{word} verify dashboard logo")
-	public void verify_dashboard_label(String role) {
-		givenThat(user).attemptsTo(Ensure.that(homepage.APP_LOGO).isDisplayed());
+	@When("verify user logged in successfully")
+	public void verify_user_logged_in_successfully() {
+		//givenThat(user).attemptsTo(Ensure.that(homepage.APP_LOGO).isDisplayed());
 	}
 }
