@@ -5,7 +5,7 @@ Feature: Manage login and logout session for user
     Given user is on Home page of application and login
     When user verify dashboard label
    
-@SmokeTest1
+@SmokeTest
   Scenario: Validate user login to application with valid credentials and logout
     Given user is on Home page of application and login
     When user clicks on logout option
@@ -15,3 +15,9 @@ Feature: Manage login and logout session for user
   Scenario: Validate user login for invalid credentials
     Given user is on Home page of application and login with invalid credentials
     When user verify error validation message
+
+@SmokeTest1
+  Scenario: Validate update profile info
+    Given user is on Home page of application and login
+    When navigate to profile screen
+    Then update profile details and validate

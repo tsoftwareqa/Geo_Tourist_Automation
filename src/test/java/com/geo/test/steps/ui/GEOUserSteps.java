@@ -3,6 +3,8 @@ package com.geo.test.steps.ui;
 import static net.serenitybdd.screenplay.GivenWhenThen.givenThat;
 import java.util.logging.Logger;
 
+import org.openqa.selenium.Keys;
+
 import com.geo.test.page_objects.HomePage;
 import com.geo.test.questions.ui.ApplicationEnquiryResult;
 import com.geo.test.tasks.ui.common.Login;
@@ -12,6 +14,7 @@ import com.geo.test.utils.Key;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.core.di.SerenityInfrastructure;
 import net.serenitybdd.core.pages.ClearContents;
@@ -89,5 +92,31 @@ public class GEOUserSteps extends UIInteractionSteps{
 	@When("verify user logged in successfully")
 	public void verify_user_logged_in_successfully() {
 		//givenThat(user).attemptsTo(Ensure.that(homepage.APP_LOGO).isDisplayed());
+	}
+	
+	@When("navigate to profile screen")
+	public void navigate_to_profile_screen() {
+		givenThat(user).attemptsTo(Click.on(homepage.DOWN_ARROW));
+		waitABit(1000);
+		givenThat(user).attemptsTo(Click.on(homepage.MY_PROFILE));
+		waitABit(1000);
+	}
+	
+	@Then("update profile details and validate")
+	public void update_profile_details_and_validate() {
+		givenThat(user).attemptsTo(Scroll.to(HomePage.EDIT_PROFILE).andAlignToBottom());
+		waitABit(3000);
+		givenThat(user).attemptsTo(Click.on(homepage.EDIT_PROFILE));
+		waitABit(3000);
+		givenThat(user).attemptsTo(Click.on(homepage.EDIT_NAME));
+		givenThat(user).attemptsTo(Clear.field(homepage.INPUT_UPDATED_NAME));
+		givenThat(user).attemptsTo(Click.on(homepage.EDIT_NAME));
+		waitABit(3000);
+		givenThat(user).attemptsTo(Enter.keyValues("TestUser"+CommonUtil.generateRandomNumber()).into(HomePage.INPUT_UPDATED_NAME).thenHit(Keys.TAB));
+		waitABit(1000);
+		givenThat(user).attemptsTo(Scroll.to(HomePage.SAVE_BTN).andAlignToBottom());
+		waitABit(3000);
+		givenThat(user).attemptsTo(Click.on(homepage.SAVE_BTN));
+		waitABit(3000);
 	}
 }

@@ -26,6 +26,11 @@ public class HomePage extends PageObject {
     public static Target CONFIRM_PASSWORD = Target.the("confirm password").locatedBy("//input[@placeholder='Confirm password']");
     public static Target TNC = Target.the("tnc").locatedBy("//input[@id='termsCheck']");
     public static Target SIGNUP_BTN = Target.the("sign up btn").locatedBy("//button[@type='submit']");
+    public static Target MY_PROFILE = Target.the("my profile").locatedBy("//span[contains(text(),'My Profile')]");
+    public static Target EDIT_PROFILE = Target.the("edit profile").locatedBy("//a[@class='user-details__settings']");
+    public static Target EDIT_NAME = Target.the("edit name").locatedBy("(//img[@class='edit-btn'])[1]");
+    public static Target INPUT_UPDATED_NAME = Target.the("updated name").locatedBy("//input[@class='vlabeledit-input']");
+    public static Target SAVE_BTN = Target.the("save btn").locatedBy("//button[@class='settings-account__save']");
     
     public boolean isLandingComplete(Actor actor) {
 
